@@ -1,11 +1,11 @@
 {
-  "name": "sliced_bread",
+  "name": "mountain_soul",
   "version": "0.1.0",
   "private": true,
   "license": "Unlicense",
   "scripts": {
     "build": "next build",
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "format": "prettier --check .",
     "lint": "next lint",
     "start": "next start",
