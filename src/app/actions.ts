@@ -1,7 +1,8 @@
 "use server";
 
-import { generateOrderId } from "@/lib/idGenerator";
 import { OrderSchema } from "@/schemas/orderSchema";
+import { prisma } from "@/lib/prisma";
+import { generateOrderId } from "@/lib/idGenerator";
 
 export interface OrderFormServerState {
   orderId: string | null;
@@ -14,7 +15,7 @@ export async function placeOrder(
   formData: FormData
 ): Promise<OrderFormServerState> {
   const validatedData = OrderSchema.safeParse({
-    name: formData.get("name"),
+    username: formData.get("username"),
     quantity: formData.get("quantity"),
     city: formData.get("city"),
     region: formData.get("region"),
@@ -32,7 +33,21 @@ export async function placeOrder(
     ...validatedData.data
   };
 
-  console.log(order);
+  try {
+    await prisma.order.create({
+      data: order
+    });
 
-  return { orderId, message: "OK" };
+    return { orderId, message: "OK" };
+  } catch (e: unknown) {
+    let errorMessage = "Unknown error";
+
+    if (e instanceof Error) {
+      errorMessage = e.message;
+    } else if (typeof e === "string") {
+      errorMessage = e;
+    }
+
+    return { orderId: null, message: "Error", errors: { _db: [errorMessage] } };
+  }
 }

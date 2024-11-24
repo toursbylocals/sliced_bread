@@ -9,6 +9,7 @@ We've created a shell application that should provide you with a basic applicati
 ```bash
 yarn install
 yarn dev
+yarn run prisma:migrate
 ```
 
 If you add any additional services that need to be installed prior to running the application, please update the `Getting Started` section with the necessary commands.

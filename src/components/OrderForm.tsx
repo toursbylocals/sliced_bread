@@ -9,7 +9,7 @@ import { OrderSchema } from "@/schemas/orderSchema";
 import { MAX_ORDER_AMOUNT } from "@/app/consts";
 
 interface OrderFormData {
-  name: string;
+  username: string;
   quantity: number;
   city: string;
   region: string;
@@ -35,7 +35,7 @@ export default function OrderForm() {
   const form = useForm<OrderFormData>({
     mode: "onChange",
     defaultValues: {
-      name: "",
+      username: "",
       quantity: 1,
       city: "",
       region: "",
@@ -54,7 +54,11 @@ export default function OrderForm() {
   return (
     <>
       <form action={formAction}>
-        <input className="block border-black border mb-2" type="text" {...form.register("name")} />
+        <input
+          className="block border-black border mb-2"
+          type="text"
+          {...form.register("username")}
+        />
 
         <input
           className="block border-black border mb-2"
@@ -118,6 +122,9 @@ export default function OrderForm() {
             : form.formState.errors.country?.message}
         </p>
 
+        <p className="text-red-500 text-sm mb-2">
+          {serverState.errors?._db ? serverState.errors._db : null}
+        </p>
         <button
           className="block border-black border mb-2 p-2 disabled:bg-gray-200"
           type="submit"
