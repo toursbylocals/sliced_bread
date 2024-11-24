@@ -25,4 +25,5 @@ yarn-error.log*
 
 /.idea
 /prisma/dev.db
+/prisma/dev.db-journal
 
