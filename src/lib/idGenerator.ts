@@ -1,4 +1,4 @@
-const ID_LENGTH = 10;
+import { ID_LENGTH } from "@/app/consts";
 
 export function generateOrderId(length = ID_LENGTH) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
