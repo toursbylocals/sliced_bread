@@ -1,23 +1,7 @@
-"use client";
-
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
+import OrderForm from "@/components/OrderForm";
 
 export default function Home() {
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [city, setCity] = useState("");
-  const [region, setRegion] = useState("");
-  const [country, setCountry] = useState("");
-  const orderId = "YOURID12304";
-  const router = useRouter();
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(name, quantity, city, region, country);
-    router.push(`/order-details/${orderId}`);
-  };
-
   return (
     <>
       <section className="container px-4 mx-auto">
@@ -35,57 +19,7 @@ export default function Home() {
         </p>
       </section>
       <section className="container px-4 mx-auto">
-        <form onSubmit={handleFormSubmit}>
-          <input
-            className="block border-black border mb-2"
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          <input
-            className="block border-black border mb-2"
-            type="number"
-            name="quantity"
-            value={quantity}
-            onChange={(e) => {
-              setQuantity(Number(e.target.value));
-            }}
-          />
-          <input
-            className="block border-black border mb-2"
-            type="text"
-            name="city"
-            value={city}
-            onChange={(e) => {
-              setCity(e.target.value);
-            }}
-          />
-          <input
-            className="block border-black border mb-2"
-            type="text"
-            name="region"
-            value={region}
-            onChange={(e) => {
-              setRegion(e.target.value);
-            }}
-          />
-          <input
-            className="block border-black border mb-2"
-            type="text"
-            name="country"
-            value={country}
-            onChange={(e) => {
-              setCountry(e.target.value);
-            }}
-          />
-
-          <button className="block border-black border mb-2 p-2" type="submit">
-            Hydrate Me!
-          </button>
-        </form>
+        <OrderForm />
       </section>
     </>
   );
