@@ -60,7 +60,7 @@ export const HeroBlock = () => (
             origin. Every sip connects you to nature’s freshest and most vibrant essence.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2">
+        <AccordionItem value="item-3">
           <AccordionTrigger>Perfect for Every Lifestyle</AccordionTrigger>
           <AccordionContent>
             Whether you’re staying active, enjoying a meal, or simply relaxing, our mountain water
