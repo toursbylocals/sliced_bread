@@ -2,6 +2,7 @@ import React from "react";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { dateFormatter } from "@/lib/dateFormatter";
+import { Table, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default async function Page({ params }: { params: Promise<{ orderId: string }> }) {
   const { orderId } = await params;
@@ -21,38 +22,38 @@ export default async function Page({ params }: { params: Promise<{ orderId: stri
       <section className="container px-4 mx-auto">
         <h2 className="text-2xl">Order Details</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Field</th>
-              <th>Value</th>
-            </tr>
-          </thead>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Field</TableHead>
+              <TableHead>Value</TableHead>
+            </TableRow>
+          </TableHeader>
           <tbody>
-            <tr>
-              <td>Order ID</td>
-              <td>{order.orderId}</td>
-            </tr>
-            <tr>
-              <td>User name</td>
-              <td>{order.username}</td>
-            </tr>
-            <tr>
-              <td>Quantity</td>
-              <td>{order.quantity}</td>
-            </tr>
-            <tr>
-              <td>Address</td>
-              <td>
+            <TableRow>
+              <TableCell>Order ID</TableCell>
+              <TableCell>{order.orderId}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>User name</TableCell>
+              <TableCell>{order.username}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Quantity</TableCell>
+              <TableCell>{order.quantity}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Address</TableCell>
+              <TableCell>
                 {order.country}, {order.region}, {order.city}
-              </td>
-            </tr>
-            <tr>
-              <td>Created at</td>
-              <td>{dateFormatter(order.createdAt)}</td>
-            </tr>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Created at</TableCell>
+              <TableCell>{dateFormatter(order.createdAt)}</TableCell>
+            </TableRow>
           </tbody>
-        </table>
+        </Table>
       </section>
     </>
   );
