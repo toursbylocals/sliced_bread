@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { Table, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 export default async function Page({ params }: { params: Promise<{ orderId: string }> }) {
   const { orderId } = await params;
@@ -19,8 +21,12 @@ export default async function Page({ params }: { params: Promise<{ orderId: stri
 
   return (
     <>
-      <section className="container px-4 mx-auto">
-        <h2 className="text-2xl">Order Details</h2>
+      <section className="container px-4 mx-auto  max-w-[1200px]">
+        <Link href={"/"} className="flex items-center text-muted-foreground text-sm mb-2">
+          <ChevronLeft className="h-4 w-4 opacity-50 mr-1" />
+          Back
+        </Link>
+        <h2 className="text-3xl text-primary font-bold mb-8">Order Details</h2>
 
         <Table>
           <TableHeader>

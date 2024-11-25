@@ -9,12 +9,12 @@ body {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 207 5% 0%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 207 5% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
+    --popover-foreground: 207 100% 0%;
+    --primary: 207 94% 67%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -70,4 +70,35 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+.page-title {
+  text-shadow: 1px 1px 2px #ffffff;
+}
+
+.header {
+  background-size: auto;
+  background-position: center -200px;
+  background-image: url('/images/bg-header-medium.webp');
+}
+
+
+@media (min-width: 768px) {
+  .header {
+    background-size: auto;
+    background-position: center -380px;
+    background-repeat: no-repeat;
+    background-image: url('/images/bg-header-large.webp');
+  }
+}
+
+.order-section {
+  background-size: cover;
+  background-position: center center;
+  background-image: url('/images/bg-order-section-medium.webp');
+}
+
+.hero-text {
+  color: #515151;
 }

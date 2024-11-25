@@ -15,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <section className="container px-4 mx-auto">
-          <h1 className="text-5xl">Mountain Soul</h1>
+        <section className="header min-h-[280px] mb-8">
+          <div className="container min-h-[280px] px-4 mx-auto flex items-center max-w-[1200px]">
+            <h1 className="text-5xl text-primary italic page-title">Mountain Soul</h1>
+          </div>
         </section>
         {children}
       </body>
