@@ -22,6 +22,7 @@ export const HeroBlock = () => (
           style={{
             objectFit: "cover"
           }}
+          sizes="400px"
           fill
           placeholder="empty"
           priority

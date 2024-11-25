@@ -67,7 +67,7 @@ export const OrderForm = () => {
   return (
     <>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent>
+        <DialogContent automation-id="confirmation-modal">
           <DialogTitle className="sr-only">Order success dialog</DialogTitle>
           <DialogDescription className="sr-only">
             Your order number is {serverState.orderId}
@@ -75,6 +75,7 @@ export const OrderForm = () => {
           <h3 className="text-2xl mb-4">Order placed!</h3>
           <p className="text-xl mb-4">Your order number is {serverState.orderId}</p>
           <Button
+            automation-id="go-to-details"
             onClick={() => {
               router.push(`/order-details/${serverState.orderId}`);
             }}
@@ -160,6 +161,7 @@ export const OrderForm = () => {
             {serverState.errors?._db ? serverState.errors._db : null}
           </p>
           <Button
+            automation-id="submit-button"
             className="block  mb-2"
             type="submit"
             disabled={jsOnClient && !form.formState.isValid}

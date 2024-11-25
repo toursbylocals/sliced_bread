@@ -10,6 +10,8 @@
     "lint": "next lint",
     "start": "next start",
     "test": "jest",
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
     "prisma:studio": "npx prisma studio",
     "prisma:generate": "npx prisma migrate dev",
     "prisma:migrate": "npx prisma migrate deploy"
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.0.1",
+    "@playwright/test": "^1.49.0",
     "@swc/core": "^1.7.40",
     "@swc/jest": "^0.2.37",
     "@testing-library/jest-dom": "^6.6.2",

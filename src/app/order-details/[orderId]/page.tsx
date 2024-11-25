@@ -26,7 +26,9 @@ export default async function Page({ params }: { params: Promise<{ orderId: stri
           <ChevronLeft className="h-4 w-4 opacity-50 mr-1" />
           Back
         </Link>
-        <h2 className="text-3xl text-primary font-bold mb-8">Order Details</h2>
+        <h2 automation-id="order-details-header" className="text-3xl text-primary font-bold mb-8">
+          Order Details
+        </h2>
 
         <Table>
           <TableHeader>
