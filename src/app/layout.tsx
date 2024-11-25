@@ -24,7 +24,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <section className="header min-h-[280px] mb-8">
-            <div className="container min-h-[280px] px-4 mx-auto flex items-center max-w-[1200px] flex justify-between">
+            <div className="container min-h-[280px] px-4 mx-auto items-center max-w-[1200px] flex justify-between">
               <h1 className="text-5xl text-primary italic page-title">Mountain Soul</h1>
               <ThemeSwitcher />
             </div>

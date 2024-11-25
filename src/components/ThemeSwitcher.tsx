@@ -4,8 +4,9 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
 
-export function ThemeSwitcher() {
+export function ThemeSwitcherBase() {
   const { resolvedTheme, setTheme } = useTheme();
 
   return (
@@ -22,3 +23,5 @@ export function ThemeSwitcher() {
     </Button>
   );
 }
+
+export const ThemeSwitcher = dynamic(() => Promise.resolve(ThemeSwitcherBase), { ssr: false });

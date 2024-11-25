@@ -86,6 +86,19 @@ export const OrderForm = () => {
         </DialogContent>
       </Dialog>
       <Form {...form}>
+        <p className="font-medium mb-2">
+          {!jsOnClient && serverState.orderId ? (
+            <>
+              <span className="mr-2">Order created</span>
+              <Link
+                href={`/order-details/${serverState.orderId}`}
+                className="text-primary hover:text-blue-400"
+              >
+                details
+              </Link>
+            </>
+          ) : null}
+        </p>
         <form action={formAction} className="space-y-4">
           <FormField
             control={form.control}
@@ -121,14 +134,20 @@ export const OrderForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Country</FormLabel>
-                <FormControl>
-                  <CountrySelect
-                    whitelist={["US", "CA", "BR"]}
-                    priorityOptions={["CA", "US", "BR"]}
-                    {...field}
-                  ></CountrySelect>
-                </FormControl>
-                <Input className="hidden" type="text" {...field} />
+                {jsOnClient ? (
+                  <>
+                    <FormControl>
+                      <CountrySelect
+                        whitelist={["US", "CA", "BR"]}
+                        priorityOptions={["CA", "US", "BR"]}
+                        {...field}
+                      ></CountrySelect>
+                    </FormControl>
+                    <Input className="hidden" type="text" {...field} />
+                  </>
+                ) : (
+                  <Input type="text" {...field} />
+                )}
                 <FormMessage />
               </FormItem>
             )}
@@ -139,10 +158,16 @@ export const OrderForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Region / Province</FormLabel>
-                <FormControl>
-                  <RegionSelect countryCode={country} {...field}></RegionSelect>
-                </FormControl>
-                <Input className="hidden" type="text" {...field} />
+                {jsOnClient ? (
+                  <>
+                    <FormControl>
+                      <RegionSelect countryCode={country} {...field}></RegionSelect>
+                    </FormControl>
+                    <Input className="hidden" type="text" {...field} />
+                  </>
+                ) : (
+                  <Input type="text" {...field} />
+                )}
                 <FormMessage />
               </FormItem>
             )}
