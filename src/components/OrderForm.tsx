@@ -20,6 +20,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/compone
 import { useRouter } from "next/navigation";
 import RegionSelect from "@/components/ui/regionSelect";
 import CountrySelect from "@/components/ui/countrySelect";
+import Link from "next/link";
 
 interface OrderFormData {
   username: string;
@@ -91,7 +92,9 @@ export const OrderForm = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>
+                  Name <span className="text-gray-400">(optional)</span>
+                </FormLabel>
                 <FormControl>
                   <Input className="mb-2" type="text" {...field} />
                 </FormControl>
@@ -162,12 +165,17 @@ export const OrderForm = () => {
           </p>
           <Button
             automation-id="submit-button"
-            className="block  mb-2"
+            className="block  mb-2 w-full"
             type="submit"
             disabled={jsOnClient && !form.formState.isValid}
           >
             Hydrate Me!
           </Button>
+          <p className="text-sm text-center">
+            <Link href={"/policy"} target={"_blank"} className="text-gray-400 hover:text-gray-500">
+              Privacy Policy
+            </Link>
+          </p>
         </form>
       </Form>
     </>
