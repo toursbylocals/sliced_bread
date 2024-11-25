@@ -3,6 +3,7 @@
 import { OrderSchema } from "@/schemas/orderSchema";
 import { prisma } from "@/lib/prisma";
 import { generateOrderId } from "@/lib/idGenerator";
+import { getCountryAndRegionName } from "@/lib/country-region-matcher";
 
 export interface OrderFormServerState {
   orderId: string | null;
@@ -30,7 +31,8 @@ export async function placeOrder(
 
   const order = {
     orderId,
-    ...validatedData.data
+    ...validatedData.data,
+    ...getCountryAndRegionName(validatedData.data.country, validatedData.data.region)
   };
 
   try {

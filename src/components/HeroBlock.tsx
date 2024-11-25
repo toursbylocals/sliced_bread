@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger
 } from "@/components/ui/accordion";
+import Image from "next/image";
 
 export const HeroBlock = () => (
   <>
@@ -14,7 +15,18 @@ export const HeroBlock = () => (
       <h3 className="text-2xl italic font-light text-primary mb-5">The Pure Essence of Nature</h3>
     </div>
     <div className="flex flex-col lg:flex-row mb-16">
-      <div className=" w-[400px] min-h-[360px] bg-gray-200 flex-[0_0_auto] lg:mr-[100px]"></div>
+      <div className="relative w-[400px] h-[360px]  flex-[0_0_auto] lg:mr-[100px] mb-8">
+        <Image
+          src={"/images/gallery-1.webp"}
+          alt={`Image of glass`}
+          style={{
+            objectFit: "cover"
+          }}
+          fill
+          placeholder="empty"
+          priority
+        />
+      </div>
       <div className="text-lg leading-6 max-w-[700px] hero-text">
         <p className="mb-4">
           Discover the unparalleled freshness of our MountainSoul water, sourced from pristine

@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/form";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+import RegionSelect from "@/components/ui/regionSelect";
+import CountrySelect from "@/components/ui/countrySelect";
 
 interface OrderFormData {
   username: string;
@@ -56,6 +58,7 @@ export const OrderForm = () => {
     resolver: zodResolver(OrderSchema),
     errors: serverState.errors
   });
+  const country = form.watch("country");
 
   useEffect(() => {
     setIsDialogOpen(Boolean(serverState.orderId));
@@ -115,8 +118,13 @@ export const OrderForm = () => {
               <FormItem>
                 <FormLabel>Country</FormLabel>
                 <FormControl>
-                  <Input className="mb-2" type="text" {...field} />
+                  <CountrySelect
+                    whitelist={["US", "CA", "BR"]}
+                    priorityOptions={["CA", "US", "BR"]}
+                    {...field}
+                  ></CountrySelect>
                 </FormControl>
+                <Input className="hidden" type="text" {...field} />
                 <FormMessage />
               </FormItem>
             )}
@@ -128,8 +136,9 @@ export const OrderForm = () => {
               <FormItem>
                 <FormLabel>Region / Province</FormLabel>
                 <FormControl>
-                  <Input className="mb-2" type="text" {...field} />
+                  <RegionSelect countryCode={country} {...field}></RegionSelect>
                 </FormControl>
+                <Input className="hidden" type="text" {...field} />
                 <FormMessage />
               </FormItem>
             )}
