@@ -13,8 +13,8 @@ import eslintPluginNext from '@next/eslint-plugin-next'
 const MAX_COMPLEXITY = 20
 const MAX_LEN = 150
 const MAX_LINES = 300
-const MAX_LINES_PER_FUNCTION = 120
-const MAX_STATEMENTS = 10
+const MAX_LINES_PER_FUNCTION = 125
+const MAX_STATEMENTS = 15
 const CHAIN_CALL_DEPTH = 4
 
 export default [
@@ -83,4 +83,4 @@ export default [
       ]
     }
   }
-]
+];

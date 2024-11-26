@@ -8,7 +8,15 @@ We've created a shell application that should provide you with a basic applicati
 
 ```bash
 yarn install
+yarn run prisma:migrate
 yarn dev
+```
+
+If you want to run e2e tests 
+
+```bash
+yarn dev # if not started
+yarn run test:e2e # or test:e2e:ui
 ```
 
 If you add any additional services that need to be installed prior to running the application, please update the `Getting Started` section with the necessary commands.
