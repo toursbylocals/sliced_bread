@@ -1,4 +1,5 @@
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+'use client';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { GridContainer } from '../atoms/GridContainer';
 import { Input } from '../atoms/Input';
 import { Typography } from '../atoms/Typography';
@@ -6,6 +7,7 @@ import Link from 'next/link';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Button from '../atoms/Button';
+import { useState } from 'react';
 
 const ORDER_SCHEMA = z.object({
   name: z.string().min(1, { message: '*Required' }),
@@ -20,7 +22,33 @@ const ORDER_SCHEMA = z.object({
 
 type OrderInputs = z.infer<typeof ORDER_SCHEMA>;
 
-export default function OrderForm() {
+export default function OrderForm({
+  createOrder,
+}: {
+  createOrder: ({
+    name,
+    quantity,
+    city,
+    state,
+    country,
+  }: {
+    name: string;
+    quantity: string;
+    city: string;
+    state: string;
+    country: string;
+  }) => Promise<{
+    name: string;
+    quantity: number;
+    city: string;
+    state: string;
+    country: string;
+    id: string;
+    created_at: Date;
+  }>;
+}) {
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -30,9 +58,17 @@ export default function OrderForm() {
     resolver: zodResolver(ORDER_SCHEMA),
   });
 
-  const onSubmit: SubmitHandler<OrderInputs> = (data) => {
-    // TODO: insert into database to product a order
-    console.log('data', data);
+  const onSubmit: SubmitHandler<OrderInputs> = async (data) => {
+    setLoading(true);
+
+    try {
+      await createOrder(data);
+
+      // simulate real case for calling api
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    } catch (err) {}
   };
 
   return (
@@ -83,7 +119,7 @@ export default function OrderForm() {
               {...register('country', { required: true })}
             />
 
-            <Button type="submit">
+            <Button type="submit" loading={loading}>
               <span>Get it!</span>
             </Button>
           </form>
