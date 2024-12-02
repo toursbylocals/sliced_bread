@@ -1,11 +1,30 @@
-import React from 'react';
-import Image from 'next/image';
-import { GridContainer } from '@/components/atoms/GridContainer';
-import { Typography } from '@/components/atoms/Typography';
+"use client";
+import React, { useLayoutEffect, useRef } from "react";
+import Image from "next/image";
+import { GridContainer } from "@/components/atoms/GridContainer";
+import { Typography } from "@/components/atoms/Typography";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useWindowSize } from "react-use";
 
 export default function Home() {
+  const { width } = useWindowSize();
+
+  const container = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"],
+  });
+
+  const rotate = useTransform(scrollYProgress, [0, 1], [8, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
+  const translateX = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const top = useTransform(scrollYProgress, [0, 1], ["45.648148vh", "65vh"]);
+
+  useLayoutEffect(() => {}, []);
+
   return (
-    <GridContainer className="relative">
+    <GridContainer className="relative h-[200vh]" ref={container}>
       <div className="relative z-30 col-span-12">
         <Typography
           variant="display1"
@@ -44,14 +63,18 @@ export default function Home() {
         draggable={false}
       />
 
-      <Image
-        className="absolute right-[calc(35/1080*100vw)] top-[calc(493/1080*100vh)] z-10 rotate-[8deg] min-[1441px]:right-[calc(0.396*100vw-535.24px)]"
-        src="/assets/images/milktea.webp"
-        width={693}
-        height={1004}
-        alt="ChaBliss Milk Tea"
-        draggable={false}
-      />
+      <motion.div
+        style={{ rotate, scale, translateX, top }}
+        className="fixed left-1/2 z-10"
+      >
+        <Image
+          src="/assets/images/milktea.webp"
+          width={693}
+          height={1004}
+          alt="ChaBliss Milk Tea"
+          draggable={false}
+        />
+      </motion.div>
     </GridContainer>
   );
 }
