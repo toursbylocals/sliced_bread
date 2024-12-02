@@ -5,7 +5,8 @@ export type TypographyVariant =
   | 'display1'
   | 'heading1'
   | 'heading2'
-  | 'description';
+  | 'description'
+  | 'link';
 
 const defaultColor = 'text-primary-400';
 
@@ -19,6 +20,7 @@ export const Typography = ({
   | JSX.IntrinsicElements['h2']
   | JSX.IntrinsicElements['h3']
   | JSX.IntrinsicElements['p']
+  | JSX.IntrinsicElements['span']
 )) => {
   return (
     <>
@@ -64,6 +66,17 @@ export const Typography = ({
         >
           {children}
         </p>
+      )}
+
+      {variant === 'link' && (
+        <span
+          className={
+            `text-[1.5rem] leading-[1.95rem] -tracking-[0.06em] underline max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
+            roboto.className
+          }
+        >
+          {children}
+        </span>
       )}
     </>
   );
