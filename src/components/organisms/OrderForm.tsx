@@ -85,14 +85,14 @@ export default function OrderForm({
 
   return (
     <section className="flex h-screen w-full flex-col justify-center bg-primary-300">
-      <GridContainer className="relative">
+      <GridContainer className="relative py-16">
         <div className="col-span-full mb-8 text-center">
           <Typography variant="heading1" color="text-secondary-100">
             Taste it now
           </Typography>
         </div>
 
-        <div className="col-span-6 col-start-4 flex flex-col gap-8">
+        <div className="col-span-full flex flex-col gap-8 lg:col-span-6 lg:col-start-2 xl:col-start-4">
           <Link href="/privacy">
             <Typography variant="link" color="text-primary-100">
               How do we use your information?

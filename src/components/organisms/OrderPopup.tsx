@@ -21,7 +21,7 @@ export default function OrderPopup() {
           transition={{ ease: 'easeInOut', duration: 0.2 }}
         >
           <motion.div
-            className="relative z-[1] flex w-[225px] flex-col gap-y-[40px] rounded-xl bg-white p-6 md:w-[60vw] md:gap-y-[60px] md:p-10"
+            className="relative z-[1] flex w-[60vw] flex-col gap-y-[40px] rounded-xl bg-white p-6 md:gap-y-[60px] md:p-10"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
