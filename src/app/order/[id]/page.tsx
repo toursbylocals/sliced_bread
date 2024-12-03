@@ -20,143 +20,145 @@ export default async function OrderDetail({
   }
 
   return (
-    <GridContainer className="gap-y-8">
-      <Typography
-        variant="heading1"
-        color="text-primary-400"
-        className="col-span-full mb-8"
-      >
-        ChaBliss
-      </Typography>
-
-      <Link className="col-span-full" href="/">
-        <Button color="light" className="mb-8">
-          <Icon icon="majesticons:chevron-left" width="24" height="24" />
-          <span>Back to Home</span>
-        </Button>
-      </Link>
-
-      <div className="col-span-1"></div>
-
-      <div className="col-start-2 col-end-12">
+    <div className="relative min-h-screen">
+      <GridContainer className="gap-y-8">
         <Typography
-          variant="heading3"
+          variant="heading1"
           color="text-primary-400"
-          className="mb-3"
+          className="col-span-full mb-8"
         >
-          Order Number:
+          ChaBliss
         </Typography>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.id}
-        </Typography>
-      </div>
+        <Link className="col-span-full" href="/">
+          <Button color="light" className="mb-8">
+            <Icon icon="majesticons:chevron-left" width="24" height="24" />
+            <span>Back to Home</span>
+          </Button>
+        </Link>
 
-      <div className="col-span-1"></div>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-      <div className="col-span-1"></div>
+        <div className="col-span-full xl:col-start-2 xl:col-end-12">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            Order Number:
+          </Typography>
 
-      <div className="col-start-2 col-end-12">
-        <Typography
-          variant="heading3"
-          color="text-primary-400"
-          className="mb-3"
-        >
-          Status:
-        </Typography>
+          <Typography variant="description" color="text-primary-400">
+            {data.id}
+          </Typography>
+        </div>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.status}
-        </Typography>
-      </div>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-      <div className="col-span-1"></div>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-      <div className="col-span-1"></div>
+        <div className="col-span-full xl:col-start-2 xl:col-end-12">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            Status:
+          </Typography>
 
-      <div className="col-start-2 col-end-6">
-        <Typography
-          variant="heading3"
-          color="text-primary-400"
-          className="mb-3"
-        >
-          Customer Name:
-        </Typography>
+          <Typography variant="description" color="text-primary-400">
+            {data.status}
+          </Typography>
+        </div>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.name}
-        </Typography>
-      </div>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-      <div className="col-start-7 col-end-12">
-        <Typography
-          variant="heading3"
-          color="text-primary-400"
-          className="mb-3"
-        >
-          Quantity:
-        </Typography>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.quantity}
-        </Typography>
-      </div>
+        <div className="col-span-full xl:col-start-2 xl:col-end-6">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            Customer Name:
+          </Typography>
 
-      <div className="col-span-1"></div>
+          <Typography variant="description" color="text-primary-400">
+            {data.name}
+          </Typography>
+        </div>
 
-      <div className="col-span-1"></div>
+        <div className="col-span-full xl:col-start-7 xl:col-end-12">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            Quantity:
+          </Typography>
 
-      <div className="col-start-2 col-end-5">
-        <Typography
-          variant="heading3"
-          color="text-primary-400"
-          className="mb-3"
-        >
-          City:
-        </Typography>
+          <Typography variant="description" color="text-primary-400">
+            {data.quantity}
+          </Typography>
+        </div>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.city}
-        </Typography>
-      </div>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-      <div className="col-start-5 col-end-8">
-        <Typography
-          variant="heading3"
-          color="text-primary-400"
-          className="mb-3"
-        >
-          State/Province:
-        </Typography>
+        <div className="hidden xl:col-span-1 xl:block"></div>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.state}
-        </Typography>
-      </div>
+        <div className="col-span-full xl:col-start-2 xl:col-end-5">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            City:
+          </Typography>
 
-      <div className="col-start-8 col-end-12">
-        <Typography
-          variant="heading3"
-          color="text-primary-400"
-          className="mb-3"
-        >
-          Country:
-        </Typography>
+          <Typography variant="description" color="text-primary-400">
+            {data.city}
+          </Typography>
+        </div>
 
-        <Typography variant="description" color="text-primary-400">
-          {data.country}
-        </Typography>
-      </div>
+        <div className="col-span-full xl:col-start-5 xl:col-end-8">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            State/Province:
+          </Typography>
 
-      <div className="col-span-1"></div>
+          <Typography variant="description" color="text-primary-400">
+            {data.state}
+          </Typography>
+        </div>
 
-      <Image
-        className="pointer-events-none absolute bottom-0 right-0 z-0"
-        src="/assets/images/milktea_bg.webp"
-        height={1000}
-        width={1000}
-        alt="background"
-      />
-    </GridContainer>
+        <div className="col-span-full xl:col-start-8 xl:col-end-12">
+          <Typography
+            variant="heading3"
+            color="text-primary-400"
+            className="mb-3"
+          >
+            Country:
+          </Typography>
+
+          <Typography variant="description" color="text-primary-400">
+            {data.country}
+          </Typography>
+        </div>
+
+        <div className="hidden xl:col-span-1 xl:block"></div>
+
+        <Image
+          className="pointer-events-none absolute bottom-0 right-0 z-0"
+          src="/assets/images/milktea_bg.webp"
+          height={1000}
+          width={1000}
+          alt="background"
+        />
+      </GridContainer>
+    </div>
   );
 }
