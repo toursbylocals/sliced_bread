@@ -22,7 +22,7 @@ export default function Greeting() {
       <div className="relative z-30 col-span-12">
         <Typography
           variant="display1"
-          className="mx-auto mb-[46px] flex justify-center pr-[16px]"
+          className="mx-auto mb-0 flex justify-center pr-[16px] xl:mb-[46px]"
         >
           {title.split('').map((char, idx) => (
             <motion.span
@@ -56,7 +56,7 @@ export default function Greeting() {
             <Typography
               variant="heading1"
               color="text-primary-300"
-              className="-mt-[1.5rem]"
+              className="-mt-[0.5rem] md:-mt-[1rem] xl:-mt-[1.5rem]"
             >
               Milk Tea
             </Typography>
@@ -70,7 +70,7 @@ export default function Greeting() {
             <Typography
               variant="heading2"
               color="text-primary-200"
-              className="-mt-[3.5rem]"
+              className="-mt-[1.5rem] md:-mt-[3rem] xl:-mt-[3.5rem]"
             >
               in the world
             </Typography>
@@ -83,9 +83,10 @@ export default function Greeting() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.3 }}
-        className="absolute -right-[calc(125/1440*100vw)] top-[calc(125/1080*100vh)] z-0 min-[1441px]:right-[calc(0.469*100vw-800.36px)]"
+        className="absolute -right-[calc(20/360*100vw)] top-[calc(204/800*100vh)] z-0 md:top-[calc(150/800*100vh)] xl:-right-[calc(125/1440*100vw)] xl:top-[calc(125/1080*100vh)] min-[1441px]:right-[calc(0.469*100vw-800.36px)]"
       >
         <Image
+          className="max-xl:w-[40vw]"
           src="/assets/images/pouring_milk.webp"
           width={411}
           height={748}

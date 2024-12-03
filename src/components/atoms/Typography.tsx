@@ -29,7 +29,7 @@ export const Typography = ({
       {variant === 'display1' && (
         <h1
           className={
-            `text-[25rem] font-bold leading-[25rem] -tracking-[0.08em] max-md:text-[6rem] max-md:font-semibold max-md:leading-[6rem] ${color ? color : defaultColor} ${className} ` +
+            `text-[25rem] font-bold leading-[25rem] -tracking-[0.08em] max-xl:text-[31.25vw] max-xl:leading-[31.25vw] ${color ? color : defaultColor} ${className} ` +
             leagureSpartan.className
           }
         >
@@ -40,7 +40,7 @@ export const Typography = ({
       {variant === 'heading1' && (
         <h2
           className={
-            `text-[12rem] leading-[12rem] -tracking-[0.06em] max-md:text-[4.75rem] max-md:font-semibold max-md:leading-[4.75rem] ${color ? color : defaultColor} ${className} ` +
+            `text-[12rem] leading-[12rem] -tracking-[0.06em] max-xl:text-[10rem] max-xl:leading-[10rem] max-md:text-[4.75rem] max-md:font-semibold max-md:leading-[4.75rem] ${color ? color : defaultColor} ${className} ` +
             leagureSpartan.className
           }
         >
@@ -51,7 +51,7 @@ export const Typography = ({
       {variant === 'heading2' && (
         <h3
           className={
-            `text-[8rem] leading-[8rem] -tracking-[0.04em] max-md:text-[2rem] max-md:leading-[2rem] ${color ? color : defaultColor} ${className} ` +
+            `text-[6rem] leading-[6rem] -tracking-[0.04em] max-xl:text-[4.5rem] max-xl:leading-[4.5rem] max-md:text-[2rem] max-md:leading-[2rem] ${color ? color : defaultColor} ${className} ` +
             roboto.className
           }
         >
