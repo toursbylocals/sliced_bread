@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Button from '../atoms/Button';
 import { useState } from 'react';
+import { useOrderPopupStore } from '@/stores/popup';
 
 const ORDER_SCHEMA = z.object({
   name: z.string().min(1, { message: '*Required' }),
@@ -48,6 +49,7 @@ export default function OrderForm({
   }>;
 }) {
   const [loading, setLoading] = useState(false);
+  const { open } = useOrderPopupStore();
 
   const {
     register,
@@ -62,13 +64,23 @@ export default function OrderForm({
     setLoading(true);
 
     try {
-      await createOrder(data);
+      const { id } = await createOrder(data);
 
       // simulate real case for calling api
       setTimeout(() => {
+        open({
+          id,
+          title: 'Order has been placed!',
+          description: `Remember your order id <br/><br/><strong>${id}</strong>`,
+        });
+
+        reset();
+
         setLoading(false);
       }, 1000);
-    } catch (err) {}
+    } catch (err) {
+      // TODO: handle unknown err message popup
+    }
   };
 
   return (

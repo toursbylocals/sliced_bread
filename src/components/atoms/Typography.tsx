@@ -5,6 +5,7 @@ export type TypographyVariant =
   | 'display1'
   | 'heading1'
   | 'heading2'
+  | 'heading3'
   | 'description'
   | 'link';
 
@@ -19,6 +20,7 @@ export const Typography = ({
   | JSX.IntrinsicElements['h1']
   | JSX.IntrinsicElements['h2']
   | JSX.IntrinsicElements['h3']
+  | JSX.IntrinsicElements['h4']
   | JSX.IntrinsicElements['p']
   | JSX.IntrinsicElements['span']
 )) => {
@@ -51,6 +53,17 @@ export const Typography = ({
           className={
             `text-[8rem] leading-[8rem] -tracking-[0.04em] max-md:text-[2rem] max-md:leading-[2rem] ${color ? color : defaultColor} ${className} ` +
             roboto.className
+          }
+        >
+          {children}
+        </h3>
+      )}
+
+      {variant === 'heading3' && (
+        <h3
+          className={
+            `text-[4rem] leading-[4rem] -tracking-[0.04em] max-md:text-[1.8rem] max-md:leading-[1.8rem] ${color ? color : defaultColor} ${className} ` +
+            leagureSpartan.className
           }
         >
           {children}

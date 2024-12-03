@@ -31,9 +31,11 @@
     "react-hook-form": "^7.53.2",
     "react-use": "^17.5.1",
     "sqlite3": "^5.1.7",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
+    "@iconify/react": "^5.0.2",
     "@next/eslint-plugin-next": "^15.0.1",
     "@swc/core": "^1.7.40",
     "@swc/jest": "^0.2.37",
