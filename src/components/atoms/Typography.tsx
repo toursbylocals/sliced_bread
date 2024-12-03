@@ -62,8 +62,8 @@ export const Typography = ({
       {variant === 'heading3' && (
         <h3
           className={
-            `text-[4rem] leading-[4rem] -tracking-[0.04em] max-md:text-[1.8rem] max-md:leading-[1.8rem] ${color ? color : defaultColor} ${className} ` +
-            leagureSpartan.className
+            `text-[2.25rem] leading-[2.7rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
+            roboto.className
           }
         >
           {children}
@@ -73,7 +73,7 @@ export const Typography = ({
       {variant === 'description' && (
         <p
           className={
-            `text-[2.25rem] leading-[2.25rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
+            `text-[1.5rem] leading-[1.5rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
             roboto.className
           }
         >

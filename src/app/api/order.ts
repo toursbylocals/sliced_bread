@@ -64,3 +64,16 @@ export const createOrder = async ({
     throw error;
   }
 };
+
+export const getOrder = async ({ id }: { id: string }) => {
+  try {
+    // insert into database to product a order
+    return await prisma.order.findUnique({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    throw error;
+  }
+};

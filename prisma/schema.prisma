@@ -13,6 +13,7 @@ datasource db {
 model Order {
   id         String   @id
   name       String
+  status     String   @default("shipping")
   quantity   Int
   city       String
   state      String
