@@ -1,10 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { GridContainer } from '@/components/atoms/GridContainer';
 import { Typography } from '@/components/atoms/Typography';
 import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function Greeting() {
+  // tackle for hydration problem
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const title = 'ChaBliss';
 
   const container = useRef(null);
@@ -78,22 +85,24 @@ export default function Greeting() {
         </div>
       </div>
 
-      <motion.div
-        style={{ rotate, opacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.3 }}
-        className="absolute -right-[calc(20/360*100vw)] top-[calc(204/800*100vh)] z-0 md:top-[calc(150/800*100vh)] xl:-right-[calc(125/1440*100vw)] xl:top-[calc(125/1080*100vh)] min-[1441px]:right-[calc(0.469*100vw-800.36px)]"
-      >
-        <Image
-          className="max-xl:w-[40vw]"
-          src="/assets/images/pouring_milk.webp"
-          width={411}
-          height={748}
-          alt="Pouring Milk"
-          draggable={false}
-        />
-      </motion.div>
+      {isClient && (
+        <motion.div
+          style={{ rotate, opacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.3 }}
+          className="absolute -right-[calc(20/360*100vw)] top-[calc(204/800*100vh)] z-0 md:top-[calc(150/800*100vh)] xl:-right-[calc(125/1440*100vw)] xl:top-[calc(125/1080*100vh)] min-[1441px]:right-[calc(0.469*100vw-800.36px)]"
+        >
+          <Image
+            className="max-xl:w-[40vw]"
+            src="/assets/images/pouring_milk.webp"
+            width={411}
+            height={748}
+            alt="Pouring Milk"
+            draggable={false}
+          />
+        </motion.div>
+      )}
     </GridContainer>
   );
 }
