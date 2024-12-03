@@ -16,9 +16,17 @@ export default function HomeBanner() {
   });
 
   const rotate = useTransform(milkTeaProgress, [0, 1], [8, 0]);
-  const scale = useTransform(milkTeaProgress, [0, 1], [1, 1.5]);
+  const scale = useTransform(
+    milkTeaProgress,
+    [0, 1],
+    [1, breakpoint.isGreater('sm') ? 1.5 : 2],
+  );
   const translateX = useTransform(milkTeaProgress, [0, 1], ['0%', '-50%']);
-  const top = useTransform(milkTeaProgress, [0, 1], ['45.648148vh', '390vh']);
+  const top = useTransform(
+    milkTeaProgress,
+    [0, 1],
+    ['45.648148vh', breakpoint.isGreater('lg') ? '490vh' : '465vh'],
+  );
   const left = useTransform(
     milkTeaProgress,
     [0, 1],
@@ -26,8 +34,8 @@ export default function HomeBanner() {
   );
 
   return (
-    // 200vh for greeting, 225vh for keywords (75vh each)
-    <section className="relative h-[425vh] overflow-clip" ref={scrollTrigger}>
+    // 200vh for greeting, 250vh for keywords (100vh each, 25vh buffer)
+    <section className="relative h-[525vh] overflow-clip" ref={scrollTrigger}>
       <Greeting />
       <Keywords />
 

@@ -23,16 +23,16 @@ export default function Keywords() {
   const { height } = useWindowSize();
 
   useEffect(() => {
-    // 200vh for greeting, 225vh for keywords (75vh each)
-    if (y <= 1.5 * height) {
+    // 200vh for greeting, 250vh for keywords (100vh each, 25vh buffer)
+    if (y <= 2.5 * height) {
       setWordIdx(0);
     }
 
-    if (y > 1.5 * height && y <= 2.25 * height) {
+    if (y > 2.5 * height && y <= 3.5 * height) {
       setWordIdx(1);
     }
 
-    if (y > 2.25 * height && y <= 3 * height) {
+    if (y > 3.5 * height && y <= 4.5 * height) {
       setWordIdx(2);
     }
   }, [height, y]);
@@ -45,6 +45,7 @@ export default function Keywords() {
             opacity: isInView ? 1 : 0,
             translateY: isInView ? '10%' : 0,
           }}
+          transition={{ delay: 0.2, duration: 0.3 }}
         >
           <Typography variant="heading2" color="text-primary-200">
             it is
@@ -62,7 +63,7 @@ export default function Keywords() {
                 translateY: isInView && wordIdx === idx ? 0 : '10vh',
               }}
               exit={{ opacity: 0, translateY: 0 }}
-              transition={{ delay: 0.3, duration: 0.3 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
             >
               <Typography variant="heading1" color="text-primary-300">
                 {keyword}
@@ -74,10 +75,10 @@ export default function Keywords() {
 
       <motion.div
         ref={inViewTrigger}
-        initial={{ opacity: 0, width: 0 }}
-        whileInView={{ opacity: 1, width: '61.574vh' }}
-        transition={{ duration: 0.3 }}
-        className="pointer-events-none absolute left-1/2 top-0 h-[105vw] -translate-x-1/2 rotate-[85deg] bg-primary-100"
+        initial={{ opacity: 0, height: 0 }}
+        whileInView={{ opacity: 1, height: '61.57vh' }}
+        transition={{ duration: 0.2 }}
+        className="pointer-events-none absolute bottom-0 left-1/2 w-[115vw] -translate-x-1/2 translate-y-1/4 -rotate-[5deg] bg-primary-100"
       ></motion.div>
     </GridContainer>
   );
