@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Button from '../atoms/Button';
 import { useState } from 'react';
 import { useOrderPopupStore } from '@/stores/popup';
+import { motion } from 'motion/react';
 
 const ORDER_SCHEMA = z.object({
   name: z.string().min(1, { message: '*Required' }),
@@ -86,13 +87,29 @@ export default function OrderForm({
   return (
     <section className="flex h-screen w-full flex-col justify-center bg-primary-300">
       <GridContainer className="relative py-16">
-        <div className="col-span-full mb-8 text-center">
+        <motion.div
+          className="col-span-full mb-8 text-center"
+          initial={{ opacity: 0, translateY: '-10%' }}
+          whileInView={{
+            opacity: 1,
+            translateY: 0,
+          }}
+          transition={{ delay: 0.3, duration: 0.3 }}
+        >
           <Typography variant="heading1" color="text-secondary-100">
             Taste it now
           </Typography>
-        </div>
+        </motion.div>
 
-        <div className="col-span-full flex flex-col gap-8 lg:col-span-6 lg:col-start-2 xl:col-start-4">
+        <motion.div
+          className="col-span-full flex flex-col gap-8 lg:col-span-6 lg:col-start-2 xl:col-start-4"
+          initial={{ opacity: 0, translateY: '-10%' }}
+          whileInView={{
+            opacity: 1,
+            translateY: 0,
+          }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+        >
           <Link href="/privacy">
             <Typography variant="link" color="text-primary-100">
               How do we use your information?
@@ -135,7 +152,7 @@ export default function OrderForm({
               <span>Get it!</span>
             </Button>
           </form>
-        </div>
+        </motion.div>
       </GridContainer>
     </section>
   );
