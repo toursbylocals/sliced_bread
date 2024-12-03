@@ -43,7 +43,7 @@ export default function Keywords() {
         <motion.div
           animate={{
             opacity: isInView ? 1 : 0,
-            translateY: isInView ? '10%' : 0,
+            translateY: isInView ? 0 : '-10%',
           }}
           transition={{ delay: 0.2, duration: 0.3 }}
         >

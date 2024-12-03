@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 
 export default function Description() {
   return (
-    <GridContainer className="relative z-20 xl:h-screen">
+    <GridContainer className="relative z-20 py-16 xl:h-screen">
       <div className="col-span-full flex justify-between gap-8 max-xl:flex-col xl:items-end xl:gap-[72px] xl:overflow-hidden">
         <motion.div
           className="flex h-[50vh] w-full flex-shrink-0 items-center overflow-hidden object-fill xl:h-full xl:w-[calc(562/1440*100vw)]"
