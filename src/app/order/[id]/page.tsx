@@ -6,6 +6,7 @@ import React from 'react';
 import Image from 'next/image';
 import Button from '@/components/atoms/Button';
 import Link from 'next/link';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 export default async function OrderDetail({
   params: id,
@@ -28,15 +29,16 @@ export default async function OrderDetail({
         ChaBliss
       </Typography>
 
+      <Link className="col-span-full" href="/">
+        <Button color="light" className="mb-8">
+          <Icon icon="majesticons:chevron-left" width="24" height="24" />
+          <span>Back to Home</span>
+        </Button>
+      </Link>
+
       <div className="col-span-1"></div>
 
       <div className="col-start-2 col-end-12">
-        <Link href="/">
-          <Button color="light" className="mb-8">
-            Back to Home
-          </Button>
-        </Link>
-
         <Typography
           variant="heading3"
           color="text-primary-400"
