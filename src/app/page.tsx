@@ -5,8 +5,21 @@ import Advantages from '../components/advantages/advantages';
 import OrderForm from '../components/orderform/orderform';
 import './i18n';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from "react";
 
-export default function Home() {
+export default function Home() {    
+    useEffect(() => {
+        async function seedData() {
+            try {
+                await fetch("/api/seed");
+                console.log("Seeding API called.");
+            } catch (error) {
+                console.error("Error calling seeding API:", error);
+            }
+        }
+        seedData();
+    }, []);
+
     const { t } = useTranslation();
 
     return (

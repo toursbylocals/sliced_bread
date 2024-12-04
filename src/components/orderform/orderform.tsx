@@ -4,36 +4,64 @@ import React, { useEffect, useState } from "react";
 import '../../app/i18n';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 const OrderForm: React.FC = () => {
     const { t, i18n } = useTranslation();
     const router = useRouter();
-    const [formData, setFormData] = useState({
-        name: "",
-        city: "",
-        state: "",
-        country: "",
-        product: "",
-        quantity: 1,
-    });
     const [products, setProducts] = useState([]);
+    const [error, setError] = useState<string | null>(null);
 
+    // Fetch products
     useEffect(() => {
         async function fetchProducts() {
-            const response = await fetch("/api/products");
-            const data = await response.json();
-            setProducts(data);
+            try {
+                const response = await fetch("/api/products");
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                setError('Failed to load products. Please try again later.');
+                console.error('Error fetching products:', error);
+            }
         }
         fetchProducts();
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+    // Validation schema using Yup
+    const schema = Yup.object().shape({
+        name: Yup.string().optional(),
+        city: Yup.string().required(t('validation.city_required')),
+        state: Yup.string().required(t('validation.state_required')),
+        country: Yup.string().required(t('validation.country_required')),
+        product: Yup.string().required(t('validation.product_required')),
+        quantity: Yup.number()
+            .required(t('validation.quantity_required'))
+            .min(1, t('validation.quantity_min')),
+    });
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(schema),
+        defaultValues: {
+            name: "",
+            city: "",
+            state: "",
+            country: "",
+            product: "",
+            quantity: 1,
+        },
+    });
+
+    const onSubmit = async (formData: any) => {
         const response = await fetch("/api/orders", {
             method: "POST",
             headers: {
@@ -52,65 +80,55 @@ const OrderForm: React.FC = () => {
 
     return (
         <section id="order" className="py-10 px-5 bg-gray-50">
-            <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-3xl font-bold mb-5 text-center">{t('order')}</h2>
+                {error && <div className="mb-4 text-red-500 text-center">{error}</div>}
 
-                <label className="block mb-4">
-                    <span className="text-lg font-medium">{t('name')}:</span>
+                <div className="mb-4">
+                    <label className="block text-lg font-medium">{t('name')}:</label>
                     <input
                         type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="mt-2 p-2 w-full border rounded-md shadow-sm"
-                        required
+                        {...register("name")}
+                        className={`mt-2 p-2 w-full border rounded-md shadow-sm ${errors.name ? 'border-red-500' : ''}`}
                     />
-                </label>
+                    {errors.name && <span className="text-red-500">{errors.name.message}</span>}
+                </div>
 
-                <label className="block mb-4">
-                    <span className="text-lg font-medium">{t('city')}:</span>
+                <div className="mb-4">
+                    <label className="block text-lg font-medium">{t('city')}:</label>
                     <input
                         type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        className="mt-2 p-2 w-full border rounded-md shadow-sm"
-                        required
+                        {...register("city")}
+                        className={`mt-2 p-2 w-full border rounded-md shadow-sm ${errors.city ? 'border-red-500' : ''}`}
                     />
-                </label>
+                    {errors.city && <span className="text-red-500">{errors.city.message}</span>}
+                </div>
 
-                <label className="block mb-4">
-                    <span className="text-lg font-medium">{t('state')}:</span>
+                <div className="mb-4">
+                    <label className="block text-lg font-medium">{t('state')}:</label>
                     <input
                         type="text"
-                        name="state"
-                        value={formData.state}
-                        onChange={handleChange}
-                        className="mt-2 p-2 w-full border rounded-md shadow-sm"
-                        required
+                        {...register("state")}
+                        className={`mt-2 p-2 w-full border rounded-md shadow-sm ${errors.state ? 'border-red-500' : ''}`}
                     />
-                </label>
+                    {errors.state && <span className="text-red-500">{errors.state.message}</span>}
+                </div>
 
-                <label className="block mb-4">
-                    <span className="text-lg font-medium">{t('country')}:</span>
+                <div className="mb-4">
+                    <label className="block text-lg font-medium">{t('country')}:</label>
                     <input
                         type="text"
-                        name="country"
-                        value={formData.country}
-                        onChange={handleChange}
-                        className="mt-2 p-2 w-full border rounded-md shadow-sm"
-                        required
+                        {...register("country")}
+                        className={`mt-2 p-2 w-full border rounded-md shadow-sm ${errors.country ? 'border-red-500' : ''}`}
                     />
-                </label>
+                    {errors.country && <span className="text-red-500">{errors.country.message}</span>}
+                </div>
 
-                <label className="block mb-4">
-                    <span className="text-lg font-medium">{t('product')}:</span>
+                <div className="mb-4">
+                    <label className="block text-lg font-medium">{t('product')}:</label>
                     <select
-                        name="product"
-                        value={formData.product}
-                        onChange={handleChange}
-                        className="mt-2 p-2 w-full border rounded-md shadow-sm"
-                        required
+                        {...register("product")}
+                        className={`mt-2 p-2 w-full border rounded-md shadow-sm ${errors.product ? 'border-red-500' : ''}`}
                     >
                         <option value="" disabled>
                             {t('select_product')}
@@ -124,21 +142,24 @@ const OrderForm: React.FC = () => {
                             );
                         })}
                     </select>
-                </label>
+                    {errors.product && <span className="text-red-500">{errors.product.message}</span>}
+                </div>
 
-                <label className="block mb-4">
-                    <span className="text-lg font-medium">{t('quantity')}:</span>
+                <div className="mb-4">
+                    <label className="block text-lg font-medium">{t('quantity')}:</label>
                     <input
                         type="number"
-                        name="quantity"
-                        value={formData.quantity}
-                        onChange={handleChange}
+                        {...register("quantity")}
+                        className={`mt-2 p-2 w-full border rounded-md shadow-sm ${errors.quantity ? 'border-red-500' : ''}`}
                         min="1"
-                        className="mt-2 p-2 w-full border rounded-md shadow-sm"
                     />
-                </label>
+                    {errors.quantity && <span className="text-red-500">{errors.quantity.message}</span>}
+                </div>
 
-                <button type="submit" className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition">
+                <button
+                    type="submit"
+                    className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition"
+                >
                     {t('submit_order')}
                 </button>
             </form>
