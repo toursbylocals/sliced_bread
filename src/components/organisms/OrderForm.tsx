@@ -13,11 +13,8 @@ import { useOrderPopupStore } from '@/stores/popup';
 import { motion } from 'motion/react';
 
 const ORDER_SCHEMA = z.object({
-  name: z.string().min(1, { message: '*Required' }),
-  quantity: z
-    .string()
-    .min(1, { message: '*Required' })
-    .regex(/^[0-9]*$/, { message: '*Numbers only' }),
+  name: z.string(),
+  quantity: z.string().regex(/^[0-9]*$/, { message: '*Numbers only' }),
   city: z.string().min(1, { message: '*Required' }),
   state: z.string().min(1, { message: '*Required' }),
   country: z.string().min(1, { message: '*Required' }),
@@ -59,6 +56,9 @@ export default function OrderForm({
     reset,
     formState: { errors },
   } = useForm<OrderInputs>({
+    defaultValues: {
+      quantity: '1',
+    },
     resolver: zodResolver(ORDER_SCHEMA),
   });
 
@@ -66,7 +66,13 @@ export default function OrderForm({
   const TIME_DELAY = 1000;
   const onSubmit: SubmitHandler<OrderInputs> = async (data) => {
     setLoading(true);
-    const order = await createOrder(data);
+    const order = await createOrder({
+      name: data.name || 'No Name',
+      quantity: data.quantity || '1',
+      city: data.city,
+      state: data.state,
+      country: data.country,
+    });
 
     // simulate real case for calling api
     setTimeout(() => {
@@ -121,13 +127,14 @@ export default function OrderForm({
             <Input
               placeholder="Your Name"
               errors={errors}
-              {...register('name', { required: true })}
+              {...register('name')}
             />
 
             <Input
               placeholder="Quantity"
+              type="number"
               errors={errors}
-              {...register('quantity', { required: true })}
+              {...register('quantity')}
             />
             <Input
               placeholder="City"
