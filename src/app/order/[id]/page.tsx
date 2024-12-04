@@ -20,7 +20,7 @@ export default async function OrderDetail({
   }
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen pb-12">
       <GridContainer className="gap-y-8">
         <Typography
           variant="heading1"

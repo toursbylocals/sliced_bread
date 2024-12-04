@@ -8,6 +8,7 @@ export type TypographyVariant =
   | 'heading3'
   | 'heading4'
   | 'description'
+  | 'description2'
   | 'link';
 
 const defaultColor = 'text-primary-400';
@@ -87,6 +88,17 @@ export const Typography = ({
         <p
           className={
             `text-[1.5rem] leading-[1.95rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
+            roboto.className
+          }
+        >
+          {children}
+        </p>
+      )}
+
+      {variant === 'description2' && (
+        <p
+          className={
+            `text-[1rem] leading-[1.5rem] -tracking-[0.06em] max-md:text-[0.8rem] max-md:leading-[0.8rem] ${color ? color : defaultColor} ${className} ` +
             roboto.className
           }
         >

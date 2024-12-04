@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import ReactLenis from 'lenis/react';
 import OrderPopup from '@/components/organisms/OrderPopup';
+import Footer from '@/components/organisms/Footer';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className="bg-background">
         <ReactLenis root>
           <main className="min-h-screen">{children}</main>
+          <Footer />
         </ReactLenis>
 
         <OrderPopup />

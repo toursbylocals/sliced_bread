@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 
 export default async function Privacy() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen pb-12">
       <GridContainer className="gap-y-8">
         <Typography
           variant="heading1"
