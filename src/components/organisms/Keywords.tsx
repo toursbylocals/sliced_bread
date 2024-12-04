@@ -1,14 +1,10 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 'use client';
+
 import { GridContainer } from '@/components/atoms/GridContainer';
 import { Typography } from '../atoms/Typography';
-import {
-  AnimatePresence,
-  motion,
-  MotionValue,
-  useInView,
-  useScroll,
-  useTransform,
-} from 'motion/react';
+import { AnimatePresence, motion, useInView } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -22,17 +18,29 @@ export default function Keywords() {
   const { y } = useWindowScroll();
   const { height } = useWindowSize();
 
+  enum ChangeWordBreakpoint {
+    First = 2.5,
+    Second = 3.5,
+    Third = 4.5,
+  }
+
   useEffect(() => {
     // 200vh for greeting, 250vh for keywords (100vh each, 25vh buffer)
-    if (y <= 2.5 * height) {
+    if (y <= ChangeWordBreakpoint.First * height) {
       setWordIdx(0);
     }
 
-    if (y > 2.5 * height && y <= 3.5 * height) {
+    if (
+      y > ChangeWordBreakpoint.First * height &&
+      y <= ChangeWordBreakpoint.Second * height
+    ) {
       setWordIdx(1);
     }
 
-    if (y > 3.5 * height && y <= 4.5 * height) {
+    if (
+      y > ChangeWordBreakpoint.Second * height &&
+      y <= ChangeWordBreakpoint.Third * height
+    ) {
       setWordIdx(2);
     }
   }, [height, y]);

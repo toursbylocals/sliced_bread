@@ -21,8 +21,11 @@ export default function Greeting() {
     offset: ['start start', 'end 0.7'],
   });
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20.15, 0]);
+  const rotateStart = 20.15;
+  const rotate = useTransform(scrollYProgress, [0, 1], [rotateStart, 0]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
+  const charDelayTime = 0.02;
 
   return (
     <GridContainer className="h-screen" ref={container}>
@@ -35,7 +38,7 @@ export default function Greeting() {
             <motion.span
               initial={{ opacity: 0, x: '-10%' }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.02 * idx, duration: 0.6 }}
+              transition={{ delay: charDelayTime * idx, duration: 0.6 }}
               key={`title-${idx}`}
               className="relative"
             >
@@ -91,7 +94,12 @@ export default function Greeting() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.3 }}
-          className="absolute -right-[calc(20/360*100vw)] top-[calc(204/800*100vh)] z-0 md:top-[calc(150/800*100vh)] xl:-right-[calc(125/1440*100vw)] xl:top-[calc(125/1080*100vh)] min-[1441px]:right-[calc(0.469*100vw-800.36px)]"
+          className={`
+            absolute -right-[calc(20/360*100vw)] top-[calc(204/800*100vh)] z-0 
+            md:top-[calc(150/800*100vh)] 
+            xl:-right-[calc(125/1440*100vw)] xl:top-[calc(125/1080*100vh)] 
+            min-[1441px]:right-[calc(0.469*100vw-800.36px)]
+          `}
         >
           <Image
             className="max-xl:w-[40vw]"

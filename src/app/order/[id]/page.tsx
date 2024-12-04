@@ -37,8 +37,6 @@ export default async function OrderDetail({
           </Button>
         </Link>
 
-        <div className="hidden xl:col-span-1 xl:block"></div>
-
         <div className="col-span-full xl:col-start-2 xl:col-end-12">
           <Typography
             variant="heading3"
@@ -53,10 +51,6 @@ export default async function OrderDetail({
           </Typography>
         </div>
 
-        <div className="hidden xl:col-span-1 xl:block"></div>
-
-        <div className="hidden xl:col-span-1 xl:block"></div>
-
         <div className="col-span-full xl:col-start-2 xl:col-end-12">
           <Typography
             variant="heading3"
@@ -70,10 +64,6 @@ export default async function OrderDetail({
             {data.status}
           </Typography>
         </div>
-
-        <div className="hidden xl:col-span-1 xl:block"></div>
-
-        <div className="hidden xl:col-span-1 xl:block"></div>
 
         <div className="col-span-full xl:col-start-2 xl:col-end-6">
           <Typography
@@ -102,10 +92,6 @@ export default async function OrderDetail({
             {data.quantity}
           </Typography>
         </div>
-
-        <div className="hidden xl:col-span-1 xl:block"></div>
-
-        <div className="hidden xl:col-span-1 xl:block"></div>
 
         <div className="col-span-full xl:col-start-2 xl:col-end-5">
           <Typography
@@ -148,8 +134,6 @@ export default async function OrderDetail({
             {data.country}
           </Typography>
         </div>
-
-        <div className="hidden xl:col-span-1 xl:block"></div>
 
         <Image
           className="pointer-events-none absolute bottom-0 right-0 z-0"

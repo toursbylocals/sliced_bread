@@ -1,4 +1,7 @@
+/* eslint-disable max-statements */
+
 'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'motion/react';
@@ -22,11 +25,15 @@ export default function HomeBanner() {
     offset: ['start start', 'end end'],
   });
 
-  const rotate = useTransform(milkTeaProgress, [0, 1], [8, 0]);
+  const rotateStart = 8;
+  const rotate = useTransform(milkTeaProgress, [0, 1], [rotateStart, 0]);
+
+  const scaleEndMd = 1.5;
+  const scaleEndSm = 2;
   const scale = useTransform(
     milkTeaProgress,
     [0, 1],
-    [1, breakpoint.isGreater('sm') ? 1.5 : 2],
+    [1, breakpoint.isGreater('sm') ? scaleEndMd : scaleEndSm],
   );
   const translateX = useTransform(milkTeaProgress, [0, 1], ['0%', '-50%']);
   const top = useTransform(

@@ -21,28 +21,19 @@ const useBreakpoint = () => {
   const [breakpoint, setBreakPoint] = useState('');
 
   useEffect(() => {
-    if (0 < width && width < breakpointsTailwind['sm']) {
+    if (width > 0 && width < breakpointsTailwind.sm) {
       setBreakPoint('sm');
     }
-    if (
-      breakpointsTailwind['sm'] < width &&
-      width < breakpointsTailwind['md']
-    ) {
+    if (breakpointsTailwind.sm < width && width < breakpointsTailwind.md) {
       setBreakPoint('md');
     }
-    if (
-      breakpointsTailwind['md'] < width &&
-      width < breakpointsTailwind['lg']
-    ) {
+    if (breakpointsTailwind.md < width && width < breakpointsTailwind.lg) {
       setBreakPoint('lg');
     }
-    if (
-      breakpointsTailwind['lg'] < width &&
-      width < breakpointsTailwind['xl']
-    ) {
+    if (breakpointsTailwind.lg < width && width < breakpointsTailwind.xl) {
       setBreakPoint('xl');
     }
-    if (width >= breakpointsTailwind['xl']) {
+    if (width >= breakpointsTailwind.xl) {
       setBreakPoint('1536');
     }
   }, [width]);

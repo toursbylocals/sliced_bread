@@ -17,9 +17,16 @@ export default function Button({
   loading,
   ...rest
 }: JSX.IntrinsicElements['button'] & ButtonProps) {
+  const selectedColorStyle = color === 'light' ? DARK_STYLE : LIGHT_STYLE;
+
   return (
     <button
-      className={`flex items-center justify-center gap-2 rounded-full px-4 py-2 text-white transition-colors ${className} ${roboto.className} ${color === 'dark' && DARK_STYLE} ${color === 'light' && LIGHT_STYLE} ${loading ? 'pointer-events-none cursor-not-allowed opacity-30' : ''}`}
+    className={`
+      flex items-center justify-center gap-2 rounded-full 
+      px-4 py-2 text-white transition-colors 
+      ${className} ${roboto.className} ${selectedColorStyle} 
+      ${loading ? 'pointer-events-none cursor-not-allowed opacity-30' : ''}
+    `}
       disabled={loading}
       {...rest}
     >

@@ -1,5 +1,13 @@
-import { leagureSpartan, roboto } from '@/app/fonts';
 import { JSX } from 'react';
+
+import Display1 from './typography/Display1';
+import Heading1 from './typography/Heading1';
+import Heading2 from './typography/Heading2';
+import Heading3 from './typography/Heading3';
+import Heading4 from './typography/Heading4';
+import Description from './typography/Description';
+import Description2 from './typography/Description2';
+import DescriptionLink from './typography/DescriptionLink';
 
 export type TypographyVariant =
   | 'display1'
@@ -11,11 +19,9 @@ export type TypographyVariant =
   | 'description2'
   | 'link';
 
-const defaultColor = 'text-primary-400';
-
 export const Typography = ({
   variant,
-  color,
+  color = 'text-primary-400',
   className = '',
   children,
 }: { variant: TypographyVariant } & (
@@ -26,96 +32,54 @@ export const Typography = ({
   | JSX.IntrinsicElements['h5']
   | JSX.IntrinsicElements['p']
   | JSX.IntrinsicElements['span']
-)) => {
-  return (
-    <>
-      {variant === 'display1' && (
-        <h1
-          className={
-            `text-[25rem] font-bold leading-[25rem] -tracking-[0.08em] max-xl:text-[31.25vw] max-xl:leading-[31.25vw] ${color ? color : defaultColor} ${className} ` +
-            leagureSpartan.className
-          }
-        >
-          {children}
-        </h1>
-      )}
+)) => (
+  <>
+    {variant === 'display1' && (
+      <Display1 color={color} className={className}>
+        {children}
+      </Display1>
+    )}
 
-      {variant === 'heading1' && (
-        <h2
-          className={
-            `text-[12rem] leading-[12rem] -tracking-[0.06em] max-xl:text-[10rem] max-xl:leading-[10rem] max-md:text-[4.75rem] max-md:font-semibold max-md:leading-[4.75rem] ${color ? color : defaultColor} ${className} ` +
-            leagureSpartan.className
-          }
-        >
-          {children}
-        </h2>
-      )}
+    {variant === 'heading1' && (
+      <Heading1 color={color} className={className}>
+        {children}
+      </Heading1>
+    )}
 
-      {variant === 'heading2' && (
-        <h3
-          className={
-            `text-[6rem] leading-[6rem] -tracking-[0.04em] max-xl:text-[4.5rem] max-xl:leading-[4.5rem] max-md:text-[2rem] max-md:leading-[2rem] ${color ? color : defaultColor} ${className} ` +
-            roboto.className
-          }
-        >
-          {children}
-        </h3>
-      )}
+    {variant === 'heading2' && (
+      <Heading2 color={color} className={className}>
+        {children}
+      </Heading2>
+    )}
 
-      {variant === 'heading3' && (
-        <h3
-          className={
-            `text-[2.25rem] leading-[2.7rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
-            roboto.className
-          }
-        >
-          {children}
-        </h3>
-      )}
+    {variant === 'heading3' && (
+      <Heading3 color={color} className={className}>
+        {children}
+      </Heading3>
+    )}
 
-      {variant === 'heading4' && (
-        <h4
-          className={
-            `text-[2rem] leading-[2.5rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
-            roboto.className
-          }
-        >
-          {children}
-        </h4>
-      )}
+    {variant === 'heading4' && (
+      <Heading4 color={color} className={className}>
+        {children}
+      </Heading4>
+    )}
 
-      {variant === 'description' && (
-        <p
-          className={
-            `text-[1.5rem] leading-[1.95rem] -tracking-[0.06em] max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
-            roboto.className
-          }
-        >
-          {children}
-        </p>
-      )}
+    {variant === 'description' && (
+      <Description color={color} className={className}>
+        {children}
+      </Description>
+    )}
 
-      {variant === 'description2' && (
-        <p
-          className={
-            `text-[1rem] leading-[1.5rem] -tracking-[0.06em] max-md:text-[0.8rem] max-md:leading-[0.8rem] ${color ? color : defaultColor} ${className} ` +
-            roboto.className
-          }
-        >
-          {children}
-        </p>
-      )}
+    {variant === 'description2' && (
+      <Description2 color={color} className={className}>
+        {children}
+      </Description2>
+    )}
 
-      {variant === 'link' && (
-        <span
-          className={
-            `text-[1.5rem] leading-[1.95rem] -tracking-[0.06em] underline max-md:text-[1rem] max-md:leading-[1rem] ${color ? color : defaultColor} ${className} ` +
-            roboto.className
-          }
-        >
-          {children}
-        </span>
-      )}
-    </>
-  );
-};
+    {variant === 'link' && (
+      <DescriptionLink color={color} className={className}>
+        {children}
+      </DescriptionLink>
+    )}
+  </>
+);

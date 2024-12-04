@@ -1,4 +1,5 @@
 'use client';
+
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { GridContainer } from '../atoms/GridContainer';
 import { Input } from '../atoms/Input';
@@ -16,7 +17,7 @@ const ORDER_SCHEMA = z.object({
   quantity: z
     .string()
     .min(1, { message: '*Required' })
-    .regex(new RegExp('^[0-9]*$'), { message: '*Numbers only' }),
+    .regex(/^[0-9]*$/, { message: '*Numbers only' }),
   city: z.string().min(1, { message: '*Required' }),
   state: z.string().min(1, { message: '*Required' }),
   country: z.string().min(1, { message: '*Required' }),
@@ -61,27 +62,24 @@ export default function OrderForm({
     resolver: zodResolver(ORDER_SCHEMA),
   });
 
+  // simulate real case for calling api
+  const TIME_DELAY = 1000;
   const onSubmit: SubmitHandler<OrderInputs> = async (data) => {
     setLoading(true);
+    const order = await createOrder(data);
 
-    try {
-      const { id } = await createOrder(data);
+    // simulate real case for calling api
+    setTimeout(() => {
+      open({
+        id: order.id,
+        title: 'Order has been placed!',
+        description: `Remember your order id <br/><br/><strong>${order.id}</strong>`,
+      });
 
-      // simulate real case for calling api
-      setTimeout(() => {
-        open({
-          id,
-          title: 'Order has been placed!',
-          description: `Remember your order id <br/><br/><strong>${id}</strong>`,
-        });
+      reset();
 
-        reset();
-
-        setLoading(false);
-      }, 1000);
-    } catch (err) {
-      // TODO: handle unknown err message popup
-    }
+      setLoading(false);
+    }, TIME_DELAY);
   };
 
   return (
@@ -129,7 +127,6 @@ export default function OrderForm({
             <Input
               placeholder="Quantity"
               errors={errors}
-              type="number"
               {...register('quantity', { required: true })}
             />
             <Input

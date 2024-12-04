@@ -1,10 +1,11 @@
 'use client';
+
 import Image from 'next/image';
 import { GridContainer } from '../atoms/GridContainer';
 import { Typography } from '../atoms/Typography';
 import { motion } from 'motion/react';
 
-export default function Description() {
+export default function HomeDescription() {
   return (
     <GridContainer className="relative z-20 py-16 xl:h-screen">
       <div className="col-span-full flex justify-between gap-8 max-xl:flex-col xl:items-end xl:gap-[72px] xl:overflow-hidden">

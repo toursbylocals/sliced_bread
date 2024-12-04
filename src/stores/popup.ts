@@ -13,26 +13,24 @@ export interface OrderPopupStore {
   close: () => void;
 }
 
-export const useOrderPopupStore = create<OrderPopupStore>((set) => {
-  return {
-    status: false,
-    content: {
-      id: '',
-      title: '',
-      description: '',
-    },
-    open: (content: OrderPopupContent) => {
-      set({ status: true, content: content });
-    },
-    close: () => {
-      set({
-        status: false,
-        content: {
-          id: '',
-          title: '',
-          description: '',
-        },
-      });
-    },
-  };
-});
+export const useOrderPopupStore = create<OrderPopupStore>((set) => ({
+  status: false,
+  content: {
+    id: '',
+    title: '',
+    description: '',
+  },
+  open: (content: OrderPopupContent) => {
+    set({ status: true, content });
+  },
+  close: () => {
+    set({
+      status: false,
+      content: {
+        id: '',
+        title: '',
+        description: '',
+      },
+    });
+  },
+}));
