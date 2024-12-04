@@ -52,7 +52,7 @@ export default function Keywords() {
           </Typography>
         </motion.div>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {keywords.map((keyword, idx) => (
             <motion.div
               className="h-0"

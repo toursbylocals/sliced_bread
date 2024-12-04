@@ -10,6 +10,7 @@
     "lint": "next lint",
     "start": "next start",
     "test": "jest",
+    "test:watch": "jest --watch",
     "prisma:studio": "npx prisma studio",
     "prisma:db-push": "npx prisma db push",
     "prisma:generate": "npx prisma generate"
