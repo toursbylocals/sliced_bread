@@ -15,22 +15,22 @@ If you add any additional services that need to be installed prior to running th
 
 ### Create a landing page that
 
-- [ ] Tells the visitor what your drink is called
-- [ ] Includes an image (or images) that has your drink in it.
-- [ ] Describe the drink so everyone understands why it’s the greatest beverage ever.
-- [ ] A privacy focused “pay me later” order form that contains the following:
-- [ ] Customers name
-- [ ] Quantity of drinks to purchase
-- [ ] City
-- [ ] State/Province
-- [ ] Country
-- [ ] An order button
+- [x] Tells the visitor what your drink is called
+- [x] Includes an image (or images) that has your drink in it.
+- [x] Describe the drink so everyone understands why it’s the greatest beverage ever.
+- [x] A privacy focused “pay me later” order form that contains the following:
+- [x] Customers name
+- [x] Quantity of drinks to purchase
+- [x] City
+- [x] State/Province
+- [x] Country
+- [x] An order button
 
 ### After ordering
 
-- [ ] Confirmation that the order succeeded
-- [ ] Provide order confirmation number
-- [ ] Provide unique URL to see order confirmation & details
+- [x] Confirmation that the order succeeded
+- [x] Provide order confirmation number
+- [x] Provide unique URL to see order confirmation & details
 
 #### Notes
 
