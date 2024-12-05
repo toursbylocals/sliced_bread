@@ -38,18 +38,18 @@ function Order() {
   if (!orderDetails) return <p>Loading...</p>;
   
   return (
-    <section>
-      <div>
-        <h1>Request details</h1>
-        <p>Order id: {orderDetails._id}</p>
-        <p>Name: {orderDetails.name}</p>
-        <p>City: {orderDetails.address.city}</p>
-        <p>State/Province: {orderDetails.address.state}</p>
-        <p>Country: {orderDetails.address.country}</p>
-        <p>Product: {orderDetails.product}</p>
-        <p>Quantity: {orderDetails.quantity}</p>
-      </div>
-    </section>
+    <section className="flex items-center justify-center h-screen">
+    <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold mb-4">Request details</h1>
+      <p>Order id: {orderDetails._id}</p>
+      <p>Name: {orderDetails.name}</p>
+      <p>City: {orderDetails.address.city}</p>
+      <p>State/Province: {orderDetails.address.state}</p>
+      <p>Country: {orderDetails.address.country}</p>
+      <p>Quantity: {orderDetails.quantity}</p>
+    </div>
+  </section>
+  
   );
 }
 
