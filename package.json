@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
     "@next/eslint-plugin-next": "^15.0.1",
     "@swc/core": "^1.7.40",
     "@swc/jest": "^0.2.37",
