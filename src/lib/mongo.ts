@@ -6,11 +6,11 @@ if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-let cached = global.mongoose;
+let cached = (global as any).mongoosecache;
 
 if (!cached) {
   cached = { conn: null, promise: null };
-  global.mongoose = cached;
+  (global as any).mongoosecache = cached;
 }
 
 async function dbConnect() {
@@ -19,7 +19,7 @@ async function dbConnect() {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose);
+    cached.promise = mongoose.connect(MONGODB_URI).then((connection) => connection);
   }
   cached.conn = await cached.promise;
 

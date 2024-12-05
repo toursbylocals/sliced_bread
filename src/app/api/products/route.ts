@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 const ProductSchema = new mongoose.Schema({
   name: {
     type: Map,
-    of: String, // A Map of language keys (e.g., 'en', 'fr') and their respective product names
+    of: String,
     required: true,
   },
   price: {

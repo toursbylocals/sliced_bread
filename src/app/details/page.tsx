@@ -1,13 +1,27 @@
 "use client";
 
-import React, { useEffect, useState }  from 'react'
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from "next/navigation";
 import '../../app/i18n';
+import { Suspense } from 'react'
 
-export default function Home() {
-  const searchParams = useSearchParams(); 
-  const orderId = searchParams.get("orderId"); 
-  const [orderDetails, setOrderDetails] = useState(null);
+interface OrderDetails {
+  _id: string;
+  name: string;
+  address: {
+    city: string;
+    state: string;
+    country: string;
+  };
+  product: string;
+  quantity: number;
+}
+
+function Order() {
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get("orderId");
+ 
+  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
 
   useEffect(() => {
     async function fetchOrder() {
@@ -36,5 +50,13 @@ export default function Home() {
         <p>Quantity: {orderDetails.quantity}</p>
       </div>
     </section>
+  );
+}
+
+export default function Home() {  
+  return (
+    <Suspense>
+     <Order/>
+   </Suspense>    
   );
 }

@@ -9,6 +9,7 @@ export default function Header() {
 
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedLanguage = e.target.value;
+        
         i18n.changeLanguage(selectedLanguage);
     };
 

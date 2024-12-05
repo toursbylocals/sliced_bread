@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         message: 'Failed to place order.',
-        error: error.message,
+        error: (error as Error).message
       },
       { status: 500 }
     );
@@ -73,7 +73,7 @@ export async function GET(req: Request) {
     return NextResponse.json(
       {
         message: 'Failed to retrieve order.',
-        error: error.message,
+        error: (error as Error).message
       },
       { status: 500 }
     );
