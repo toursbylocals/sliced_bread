@@ -13,6 +13,22 @@ yarn dev
 
 If you add any additional services that need to be installed prior to running the application, please update the `Getting Started` section with the necessary commands.
 
+### Updates To The Project
+
+#### For Testinng Purposes.
+
+```bash
+yarn install --save-dev @testing-library/jest-dom --legacy-peer-deps
+```
+
+#### For Production Deployment.
+
+- Create and .env file and add.
+
+```bash
+PUBLIC_BASE_URL='Your value.'
+```
+
 ### Create a landing page that
 
 - [ ] Tells the visitor what your drink is called
