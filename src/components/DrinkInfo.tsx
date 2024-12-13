@@ -3,7 +3,7 @@ import Image from 'next/image';
 export const DrinkInfo = () => {
   return (
     <>
-      <div className="flex justify-center pb-4">
+      <div data-testid="drinkinfo-photo" className="flex justify-center pb-4">
         <Image
           alt="Spicy Manhattan"
           height={360}
@@ -11,10 +11,13 @@ export const DrinkInfo = () => {
           width={237}
         />
       </div>
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+      <h2
+        data-testid="drinkinfo-title"
+        className="text-2xl font-semibold text-gray-800 mb-4"
+      >
         Spicy Manhattan
       </h2>
-      <p className="text-gray-600">
+      <p data-testid="drinkinfo-description" className="text-gray-600">
         A Spicy Manhattan is a bold twist on the classic cocktail, combining rye
         whiskey or bourbon, sweet vermouth, and aromatic bitters with a spicy
         kick from chili-infused bitters or muddled jalapeño. Stirred and served

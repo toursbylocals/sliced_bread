@@ -63,7 +63,7 @@ export const OrderForm: FC<OrderFormProps> = ({ updateToken }) => {
         Order Your Spicy Manhattans!
       </h5>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form aria-label="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-4">
           <div className="flex gap-4">
             <LabelInput
@@ -109,6 +109,9 @@ export const OrderForm: FC<OrderFormProps> = ({ updateToken }) => {
             />
           </div>
           <section aria-live="polite">
+            {errors.customerName && errors.customerName.type === 'pattern' && (
+              <FormError>Name is invalid.</FormError>
+            )}
             {errors.city && errors.city.type === 'required' && (
               <FormError>City is required.</FormError>
             )}

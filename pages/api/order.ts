@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ApiOrderResponseData>,
 ) {
-  const token = jwt.sign(req.body, process.env.NEXT_PUBLIC_JWT_SECRET);
+  const token = jwt.sign(req.body, process.env.JWT_SECRET);
 
   res
     .status(200)

@@ -1,7 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NEXT_PUBLIC_JWT_SECRET: string;
+      JWT_SECRET: string;
     }
   }
 }

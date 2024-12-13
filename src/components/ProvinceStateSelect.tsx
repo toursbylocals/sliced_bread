@@ -6,7 +6,7 @@ export const ProvinceStateSelect: FC<LabelSelectProps> = ({ ...props }) => {
   return (
     <LabelSelect {...props}>
       <option value="">Select a Province / State</option>
-      <optgroup label="Provinces">
+      <optgroup data-testid="ProvinceStateSelect-Provinces" label="Provinces">
         <option value="AB">Alberta</option>
         <option value="BC">British Columbia</option>
         <option value="MB">Manitoba</option>
@@ -21,7 +21,7 @@ export const ProvinceStateSelect: FC<LabelSelectProps> = ({ ...props }) => {
         <option value="SK">Saskatchewan</option>
         <option value="YT">Yukon Territory</option>
       </optgroup>
-      <optgroup label="States">
+      <optgroup data-testid="ProvinceStateSelect-States" label="States">
         <option value="AK">Alaska</option>
         <option value="AL">Alabama</option>
         <option value="AR">Arkansas</option>
