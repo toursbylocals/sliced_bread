@@ -53,59 +53,65 @@ export const OrderForm: FC<OrderFormProps> = ({ updateToken }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="space-y-4">
-        <div className="flex gap-4">
-          <LabelInput
-            labelFor={OrderFormField.CustomerName}
-            labelText="Name"
-            {...register(OrderFormField.CustomerName, {
-              pattern: DEFAULT_PATTERN,
-            })}
-          />
-          <LabelInput
-            inputType="number"
-            labelFor={OrderFormField.NumberOfDrinks}
-            labelText="Number of Drinks"
-            {...register(OrderFormField.NumberOfDrinks)}
-          />
+    <>
+      <h5 className="font-semibold text-gray-800 mb-4">
+        Order Your Spicy Manhattans!
+      </h5>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-4">
+          <div className="flex gap-4">
+            <LabelInput
+              labelFor={OrderFormField.CustomerName}
+              labelText="Name"
+              {...register(OrderFormField.CustomerName, {
+                pattern: DEFAULT_PATTERN,
+              })}
+            />
+            <LabelInput
+              inputType="number"
+              labelFor={OrderFormField.NumberOfDrinks}
+              labelText="Number of Drinks"
+              {...register(OrderFormField.NumberOfDrinks)}
+            />
+          </div>
+          <div className="flex gap-4">
+            <LabelInput
+              labelFor={OrderFormField.City}
+              labelText="City*"
+              {...register(OrderFormField.City, {
+                required: true,
+                pattern: DEFAULT_PATTERN,
+              })}
+            />
+            <LabelSelect
+              labelFor={OrderFormField.Country}
+              labelText="Country"
+              {...register(OrderFormField.Country, {
+                required: true,
+              })}
+            >
+              <option value="CA">Canada</option>
+              <option value="US">United States</option>
+            </LabelSelect>
+            <ProvinceStateSelect
+              labelFor={OrderFormField.ProvinceState}
+              labelText="Province / State"
+              {...register(OrderFormField.ProvinceState, {
+                required: true,
+              })}
+            />
+          </div>
+          <div className="flex">
+            <button
+              type="submit"
+              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Get Your Drinks!
+            </button>
+          </div>
         </div>
-        <div className="flex gap-4">
-          <LabelInput
-            labelFor={OrderFormField.City}
-            labelText="City*"
-            {...register(OrderFormField.City, {
-              required: true,
-              pattern: DEFAULT_PATTERN,
-            })}
-          />
-          <LabelSelect
-            labelFor={OrderFormField.Country}
-            labelText="Country"
-            {...register(OrderFormField.Country, {
-              required: true,
-            })}
-          >
-            <option value="CA">Canada</option>
-            <option value="US">United States</option>
-          </LabelSelect>
-          <ProvinceStateSelect
-            labelFor={OrderFormField.ProvinceState}
-            labelText="Province / State"
-            {...register(OrderFormField.ProvinceState, {
-              required: true,
-            })}
-          />
-        </div>
-        <div className="flex">
-          <button
-            type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Get Your Drinks!
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
