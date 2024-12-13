@@ -1,79 +1,48 @@
+Short video detailing submission:
+loom.com/share/7707271840674375ad684067f7b4d2e3
+
+Longer version:
+loom.com/share/39661334002e4d41b36cf4d5d17f9ae5
+
 # Greatest Beverage
 
 Congratulations! After years of tinkering with your secret recipe you have managed to create the world's greatest beverage. Inspired by some of the great modern day entrepreneurs, you have chosen to sell your beverage directly to consumers from your site. With an MVP perspective, you have chosen to ship a minimal set of features to start with the intention of improving the site based off of your customers' feedback.
 
-## Getting Started
-
-We've created a shell application that should provide you with a basic application to get started really quickly. It is using yarn classic `1.22.22` as the package manager. From the root of the project run the following commands to get started:
-
-```bash
-yarn install
-yarn dev
-```
-
-If you add any additional services that need to be installed prior to running the application, please update the `Getting Started` section with the necessary commands.
-
 ### Create a landing page that
 
-- [ ] Tells the visitor what your drink is called
-- [ ] Includes an image (or images) that has your drink in it.
-- [ ] Describe the drink so everyone understands why it’s the greatest beverage ever.
-- [ ] A privacy focused “pay me later” order form that contains the following:
-- [ ] Customers name
-- [ ] Quantity of drinks to purchase
-- [ ] City
-- [ ] State/Province
-- [ ] Country
-- [ ] An order button
+- [x] Tells the visitor what your drink is called
+- [x] Includes an image (or images) that has your drink in it.
+- [x] Describe the drink so everyone understands why it’s the greatest beverage ever.
+- [x] A privacy focused “pay me later” order form that contains the following:
+- [x] Customers name
+- [x] Quantity of drinks to purchase
+- [x] City
+- [x] State/Province
+- [x] Country
+- [x] An order button
 
 ### After ordering
 
-- [ ] Confirmation that the order succeeded
-- [ ] Provide order confirmation number
-- [ ] Provide unique URL to see order confirmation & details
+- [x] Confirmation that the order succeeded
+- [x] Provide order confirmation number
+- [x] Provide unique URL to see order confirmation & details
 
-#### Notes
+### Tooling Changes
 
-- Images can be your own or from the internet. A great site for public domain photos is [Unsplash](https://www.unsplash.com).
-- "pay me later" means you are _not_ asking for any payment information.
-- Customers name should be optional, if the visitor does not supply one you should make up a name for them
-- Quantity of drinks to purchase should be optional, if the visitor does not supply an amount, you should decide the amount they are ordering
-- City, State/Province and Country are required
-- The order button can have any call to action text (button text) _except_ "Order" or "Submit".
-- Keep your customers privacy in mind throughout the ordering process
+I've replaced `eslint` and `prettier` with [biomejs](https://biomejs.dev/) that does a great job providing both linting and formatting at a fraction of the time required compared to the former. They also have a [VSCode extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome) and a CLI that operates very similarly to the `eslint` and `prettier` plugins.
 
-## Guidelines
+The reasoning behind this is that the config required for both sometimes took as much time as getting a full feature completed. Biome is more opinionated and provides a better out of the box solution with much less configuration.
 
-- This challenge is intended to take you a few hours of focused time.
-- Think of your submission as being a code review request. Submit code that you would personally like to review.
-- We will be reviewing it from the perspective of you being a member of the team.
-- If there are steps that extend beyond what we have supplied in our sample templates, document them.
-- Your PR description & loom video will be reviewed first and will be used to judge your submission. Include anything in there that you would like us to read. Decisions or tradeoffs that you made, document it.
+I've updated the scripts in `package.json` accordingly if you'd like to see or try these changes yourselves.
 
-### AI Tooling
+### AI / Resource Uses
 
-In today's fast-paced world of AI and software engineering, tools like Cursor, Github CoPilot, and ChatGPT can be great companions to help boost your productivity. Feel free to use these tools during this technical assessment, but make sure you understand the code suggestions they provide.
+ChatGPT was used to generate the base layout (two columns) to avoid having to spend unnecessary time designing as well as some of the base jest tests. As far as form fields went I used some examples provided on [tailwindui.com](https://tailwindui.com/).
 
-## What we look for
+### Privacy
 
-When we are reviewing your Pull Request, these are the areas we will be focusing on:
+To maintain customer privacy, the use of JWTs was implemented to mask the data in the URL, in a real-world scenario, this would just be an order id and a login token passed along to validate ownership of the order. On successful order, the URL is updated with the token so you can revisit at any time.
 
-- We care about code quality - Does it follow good coding practices & guidelines?
-- We care about functionality - Does it do what it should do?
-- We care about maintainability - Will this code be easy to maintain and build off of?
-- We care about performance - Is it fast?
-- We care about readability - Is it easy to understand?
-- We care about testing - Is it well tested?
-- We care about usability - Is it easy to use?
+### Nice-to-haves
 
-### Loom Submission
-
-As a remote company, great video communication is crucial for us. We value crisp Loom demos that showcase your personality and hankering for your work. Your submission should be under 5 minutes and include a very brief introduction of yourself, a walkthrough of your code, and the decisions you made while crafting your solution. If you used AI tooling, please highlight what tools you used, where you used them, and how they helped (or hindered) you. This video will help us understand your thought process and how you
-approach problem-solving in a remote environment. Include the loom video in your email to us when you submit your solution.
-
-### Next steps
-
-1. Clone this repo
-2. Code
-3. Create a Pull Request as your submission
-4. Contact us via email to let us know you've submitted your solution
+Given more time I would have liked to add permanent storage with an ORM such as Prisma for schema introspection and order storage, and Playwright for some e2e testing.
