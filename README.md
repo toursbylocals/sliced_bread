@@ -1,8 +1,10 @@
-Short video detailing submission:
-loom.com/share/7707271840674375ad684067f7b4d2e3
+![Order Form](https://github.com/effekt/sliced_bread/blob/main/assets/OrderForm.png?raw=true)
 
-Longer version:
-loom.com/share/39661334002e4d41b36cf4d5d17f9ae5
+#### Short video detailing submission:
+[Short Version](loom.com/share/7707271840674375ad684067f7b4d2e3)
+
+#### Longer version:
+[Long Version](loom.com/share/39661334002e4d41b36cf4d5d17f9ae5)
 
 # Greatest Beverage
 
