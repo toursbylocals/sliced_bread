@@ -1,5 +1,6 @@
-import type { OrderDetailsType } from '@/api/order/details/[order]';
 import type { FC } from 'react';
+
+import type { OrderDetailsType } from '@/api/order/details/[order]';
 
 export type OrderDetailsProps = {
   orderDetails: OrderDetailsType | undefined;
@@ -11,7 +12,7 @@ export const OrderDetails: FC<OrderDetailsProps> = ({ orderDetails }) => {
   }
 
   return (
-    <div className="max-w-lg mx-auto p-6 shadow-lg rounded-lg">
+    <>
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">
         Order Summary
       </h2>
@@ -41,6 +42,6 @@ export const OrderDetails: FC<OrderDetailsProps> = ({ orderDetails }) => {
           <span className="text-gray-800">{orderDetails.numberOfDrinks}</span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
