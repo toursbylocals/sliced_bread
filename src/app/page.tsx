@@ -1,5 +1,5 @@
 'use client';
-import type { OrderDetailsType } from '@/api/order/details/[order]';
+import type { ApiOrderDetails } from '@/api/order/details/[order]';
 import { OrderDetails } from '@/components/OrderDetails';
 import { OrderForm } from '@/components/OrderForm';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -10,7 +10,7 @@ export default function HomePage() {
   const pathName = usePathname();
   const urlSearchParams = useSearchParams();
 
-  const [orderDetails, setOrderDetails] = useState<OrderDetailsType>();
+  const [orderDetails, setOrderDetails] = useState<ApiOrderDetails | null>();
 
   const updateToken = (token: string) => {
     const searchParams = new URLSearchParams();
@@ -29,10 +29,12 @@ export default function HomePage() {
         .then((data) => {
           setOrderDetails(data.data);
         });
+    } else {
+      setOrderDetails(null);
     }
   }, [token]);
 
-  if (orderDetails || token) {
+  if (orderDetails && token) {
     return <OrderDetails orderDetails={orderDetails} />;
   }
 

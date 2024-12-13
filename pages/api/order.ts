@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-export type OrderResponseData = {
+export type ApiOrderResponseData = {
   data: {
     token: string;
   };
@@ -10,7 +10,7 @@ export type OrderResponseData = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<OrderResponseData>,
+  res: NextApiResponse<ApiOrderResponseData>,
 ) {
   const token = jwt.sign(req.body, process.env.NEXT_PUBLIC_JWT_SECRET);
 

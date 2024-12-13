@@ -1,9 +1,10 @@
 import type { FC } from 'react';
 
-import type { OrderDetailsType } from '@/api/order/details/[order]';
+import type { ApiOrderDetails } from '@/api/order/details/[order]';
+import Link from 'next/link';
 
 export type OrderDetailsProps = {
-  orderDetails: OrderDetailsType | undefined;
+  orderDetails: ApiOrderDetails | undefined;
 };
 
 export const OrderDetails: FC<OrderDetailsProps> = ({ orderDetails }) => {
@@ -16,7 +17,7 @@ export const OrderDetails: FC<OrderDetailsProps> = ({ orderDetails }) => {
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">
         Order Summary
       </h2>
-      <div className="space-y-4">
+      <div className="space-y-4 mb-8">
         <div className="flex justify-between">
           <span className="font-semibold text-gray-600">Order ID:</span>
           <span className="text-gray-800">{orderDetails.orderId}</span>
@@ -42,6 +43,9 @@ export const OrderDetails: FC<OrderDetailsProps> = ({ orderDetails }) => {
           <span className="text-gray-800">{orderDetails.numberOfDrinks}</span>
         </div>
       </div>
+      <Link className="text-blue-600" href={'/'}>
+        Go back to order form {'>'}
+      </Link>
     </>
   );
 };

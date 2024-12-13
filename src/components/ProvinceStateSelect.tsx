@@ -5,6 +5,7 @@ import { LabelSelect, type LabelSelectProps } from './LabelSelect';
 export const ProvinceStateSelect: FC<LabelSelectProps> = ({ ...props }) => {
   return (
     <LabelSelect {...props}>
+      <option value="">Select a Province / State</option>
       <optgroup label="Provinces">
         <option value="AB">Alberta</option>
         <option value="BC">British Columbia</option>

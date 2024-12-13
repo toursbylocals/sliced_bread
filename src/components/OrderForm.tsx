@@ -1,10 +1,11 @@
 import { faker } from '@faker-js/faker';
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
-
-import type { OrderResponseData } from '@/api/order';
-
 import { v4 } from 'uuid';
+
+import type { ApiOrderResponseData } from '@/api/order';
+
+import { FormError } from './FormError';
 import { LabelInput } from './LabelInput';
 import { LabelSelect } from './LabelSelect';
 import { ProvinceStateSelect } from './ProvinceStateSelect';
@@ -30,7 +31,11 @@ export enum OrderFormField {
 }
 
 export const OrderForm: FC<OrderFormProps> = ({ updateToken }) => {
-  const { register, handleSubmit } = useForm<OrderFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<OrderFormInput>();
   const DEFAULT_PATTERN = /^[A-Za-z -]+$/i;
   const onSubmit = async (formData: OrderFormInput) => {
     if (!formData.customerName) {
@@ -47,7 +52,7 @@ export const OrderForm: FC<OrderFormProps> = ({ updateToken }) => {
       body: JSON.stringify(finalData),
       method: 'POST',
     });
-    const responseData = (await response.json()) as OrderResponseData;
+    const responseData = (await response.json()) as ApiOrderResponseData;
 
     updateToken(responseData.data.token);
   };
@@ -86,22 +91,35 @@ export const OrderForm: FC<OrderFormProps> = ({ updateToken }) => {
             />
             <LabelSelect
               labelFor={OrderFormField.Country}
-              labelText="Country"
+              labelText="Country*"
               {...register(OrderFormField.Country, {
                 required: true,
               })}
             >
+              <option value="">Select a Country</option>
               <option value="CA">Canada</option>
               <option value="US">United States</option>
             </LabelSelect>
             <ProvinceStateSelect
               labelFor={OrderFormField.ProvinceState}
-              labelText="Province / State"
+              labelText="Province / State*"
               {...register(OrderFormField.ProvinceState, {
                 required: true,
               })}
             />
           </div>
+          <section aria-live="polite">
+            {errors.city && errors.city.type === 'required' && (
+              <FormError>City is required.</FormError>
+            )}
+            {errors.country && errors.country.type === 'required' && (
+              <FormError>Country is required.</FormError>
+            )}
+            {errors.provinceState &&
+              errors.provinceState.type === 'required' && (
+                <FormError>Province / State is required.</FormError>
+              )}
+          </section>
           <div className="flex">
             <button
               type="submit"

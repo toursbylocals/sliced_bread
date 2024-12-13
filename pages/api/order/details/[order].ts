@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-export type OrderDetailsType = {
+export type ApiOrderDetails = {
   city: string;
   country: string;
   customerName: string;
@@ -10,21 +10,21 @@ export type OrderDetailsType = {
   provinceState: string;
 };
 
-export type OrderDetailsResponseDataType = {
-  data: OrderDetailsType;
+export type ApiOrderDetailsResponseDataType = {
+  data: ApiOrderDetails;
   message: string;
 };
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<OrderDetailsResponseDataType>,
+  res: NextApiResponse<ApiOrderDetailsResponseDataType>,
 ) {
   const { order } = req.query;
 
   const orderDetails = jwt.decode(order as string);
 
   res.status(200).json({
-    data: orderDetails as OrderDetailsType,
+    data: orderDetails as ApiOrderDetails,
     message: 'Successfully retrieved order.',
   });
 }
