@@ -14,7 +14,7 @@
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "next": "15.0.2",
+    "next": "15.1.2",
     "punycode": "^2.3.1",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021"
