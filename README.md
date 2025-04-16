@@ -13,6 +13,11 @@ yarn dev
 
 If you add any additional services that need to be installed prior to running the application, please update the `Getting Started` section with the necessary commands.
 
+### Added Libraries
+
+- React Hook Form: used on the order form
+- UUID: used to generate the confirmation id
+
 ### Create a landing page that
 
 - [ ] Tells the visitor what your drink is called
